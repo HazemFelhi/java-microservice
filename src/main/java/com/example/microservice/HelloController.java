@@ -1,7 +1,7 @@
 package com.example.microservice;
 
-import org.springframework.web.bind.GetMapping;
-import org.springframework.web.bind.RestController;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HelloController {
