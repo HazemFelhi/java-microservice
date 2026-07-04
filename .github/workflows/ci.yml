@@ -29,12 +29,13 @@ jobs:
         path: ~/.sonar/cache
         key: ${{ runner.os }}-sonar
         
-    - name: Run Tests & SonarQube Analysis
+    - name: Run Tests
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=java-microservice -Dsonar.organization=${{ github.repository_owner }} -Dsonar.host.url=https://sonarcloud.io
-      
+      # To enable SonarQube later, change the below run command to:
+      # run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=java-microservice -Dsonar.organization=${{ github.repository_owner }} -Dsonar.host.url=https://sonarcloud.io
+      run: mvn -B verify
     - name: Build Application Jar
       run: mvn -B package -DskipTests --file pom.xml
       
